@@ -1,3 +1,4 @@
+  
 import 'dart:convert';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -11,7 +12,7 @@ import 'package:notkk/waiting.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
-  Register({super.key});
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();

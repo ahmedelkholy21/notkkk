@@ -1,8 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// تحويل الـ StatelessWidget إلى StatefulWidget
-class ContProfile extends StatefulWidget {
+ class ContProfile extends StatefulWidget {
   ContProfile({
     super.key,
     required this.con,
@@ -15,6 +16,7 @@ class ContProfile extends StatefulWidget {
   String txt;
 
   @override
+  // ignore: library_private_types_in_public_api
   _ContProfileState createState() => _ContProfileState();
 }
 

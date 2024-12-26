@@ -1,5 +1,4 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:notkk/sign/Register.dart';
 
 class ProfilePage extends StatelessWidget {

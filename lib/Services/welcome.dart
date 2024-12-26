@@ -26,13 +26,13 @@ class _WelcomescreenState extends State<Welcomescreen> {
 
   // منع العودة للخلف
   Future<bool> _onWillPop() async {
-    return false; // عدم السماح بالرجوع إلى الخلف
+    return false;  
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _onWillPop, // ربط حدث الرجوع
+      onWillPop: _onWillPop, 
       child: Scaffold(
         extendBody: true,
         body: _pages[_currentIndex],
@@ -40,7 +40,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
           backgroundColor: const Color(0xff1EA3CD),
           onPressed: () {
             setState(() {
-              _currentIndex = 2; // التنقل إلى صفحة الإعدادات عند الضغط على الزر العائم
+              _currentIndex = 2;  
             });
           },
           child: const Icon(Icons.settings, color: Colors.white),
@@ -60,7 +60,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () {
-                    _onItemTapped(0); // التنقل إلى الصفحة الرئيسية
+                    _onItemTapped(0); 
                   },
                   child: Stack(
                     alignment: Alignment.center,
@@ -86,7 +86,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _onItemTapped(1); // التنقل إلى صفحة الملف الشخصي
+                    _onItemTapped(1); 
                   },
                   child: Stack(
                     alignment: Alignment.center,

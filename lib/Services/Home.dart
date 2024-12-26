@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:notkk/Services/ac.dart';
@@ -79,7 +81,7 @@ class Home extends StatelessWidget {
 }
 
 class inkgrid extends StatelessWidget {
-  inkgrid(
+  const inkgrid(
       {super.key,
       required this.img,
       required this.txt,

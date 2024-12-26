@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:notkk/tools/Animation.dart';
  import 'package:speech_to_text/speech_to_text.dart' as stt;

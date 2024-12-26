@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:notkk/tools/Animation.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -43,7 +45,7 @@ class _MyGrid1State extends State<MyGrid1> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String? matchedItem;
-  Map<String, int> letterCount = {}; // لتخزين عدد مرات ذكر كل حرف
+  Map<String, int> letterCount = {};  
 
   @override
   void initState() {
@@ -51,8 +53,7 @@ class _MyGrid1State extends State<MyGrid1> {
     _speech = stt.SpeechToText();
     _initializeSpeech();
 
-    // تهيئة عدد مرات ذكر كل حرف
-    for (var item in items) {
+     for (var item in items) {
       letterCount[item['name']!] = 0;
     }
   }
@@ -67,15 +68,13 @@ class _MyGrid1State extends State<MyGrid1> {
         String recognizedWords = result.recognizedWords;
 
         if (recognizedWords.isNotEmpty) {
-          userInput = recognizedWords; // احصل على كل الكلمات
-          // تحقق من التطابق مع العناصر
-          matchedItem = items.firstWhere(
+          userInput = recognizedWords; 
+           matchedItem = items.firstWhere(
             (item) => recognizedWords.contains(item['test']!),
             orElse: () => {'name': '', 'path': '', 'test': ''},
-          )['name']; // الحصول على اسم العنصر المتطابق
+          )['name'];  
 
-          // زيادة عدد مرات ذكر الحرف
-          if (matchedItem != null && matchedItem!.isNotEmpty) {
+           if (matchedItem != null && matchedItem!.isNotEmpty) {
             letterCount[matchedItem!] = letterCount[matchedItem!]! + 1;
           }
 
@@ -134,17 +133,16 @@ class _MyGrid1State extends State<MyGrid1> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
-                    bool isMatched = matchedItem == item['name']; // تحقق من العنصر المتطابق
-                    int count = letterCount[item['name']!] ?? 0; // عدد مرات ذكر الحرف
+                    bool isMatched = matchedItem == item['name'];  
+                    int count = letterCount[item['name']!] ?? 0;  
                     Color cardColor;
 
-                    // تحديد لون الخلفية بناءً على عدد مرات ذكر الحرف
-                    if (count > 10) {
-                      cardColor = Colors.green; // اللون الأخضر إذا تم ذكره أكثر من 10 مرات
+                     if (count > 10) {
+                      cardColor = Colors.green;  
                     } else if (isMatched) {
-                      cardColor = Colors.blue; // اللون الأزرق إذا تم ذكره مرة واحدة
+                      cardColor = Colors.blue;  
                     } else {
-                      cardColor = Colors.white; // اللون الافتراضي
+                      cardColor = Colors.white; 
                     }
 
                     return Container(
@@ -164,7 +162,7 @@ class _MyGrid1State extends State<MyGrid1> {
                               item['name']!,
                               style: TextStyle(
                                 fontSize: 24,
-                                color: isMatched ? Colors.white : Colors.black, // تغيير لون النص عند المطابقة
+                                color: isMatched ? Colors.white : Colors.black,  
                               ),
                             ),
                           ],

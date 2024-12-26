@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:notkk/tools/Animation.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -69,8 +71,7 @@ class _MyGridState extends State<MyGrid> {
 
         if (recognizedWords.isNotEmpty) {
           userInput = recognizedWords[0]; 
-          // زيادة عدد مرات ذكر الحرف
-          if (letterCount.containsKey(userInput)) {
+           if (letterCount.containsKey(userInput)) {
             letterCount[userInput] = letterCount[userInput]! + 1;
           }
           _stopListening();  
@@ -131,13 +132,12 @@ class _MyGridState extends State<MyGrid> {
                     int count = letterCount[item['letter']!] ?? 0;
                     Color cardColor;
 
-                    // تحديد لون الخلفية بناءً على عدد مرات ذكر الحرف
-                    if (count >= 10) {
-                      cardColor = Colors.green; // اللون الأخضر إذا تم ذكره 10 مرات
+                     if (count >= 10) {
+                      cardColor = Colors.green;  
                     } else if (userInput == item['letter']) {
-                      cardColor = Colors.blue; // اللون الأزرق إذا تم ذكره مرة واحدة
+                      cardColor = Colors.blue;  
                     } else {
-                      cardColor = Colors.white; // اللون الافتراضي
+                      cardColor = Colors.white;  
                     }
 
                     return Container(

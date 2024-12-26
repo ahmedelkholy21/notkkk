@@ -4,8 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:notkk/Services/ever.dart';
 import 'package:notkk/Services/privite.dart';
-import 'package:notkk/sign/Register.dart';
-import 'package:notkk/sign/login.dart';
+ import 'package:notkk/sign/login.dart';
 import 'package:notkk/tools/contprofile.dart';
 
 class More extends StatelessWidget {

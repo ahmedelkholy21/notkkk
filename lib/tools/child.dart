@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Child extends StatelessWidget {
-  // ignore: prefer_const_constructors_in_immutables
+  // ignore: prefer_const_constructors_in_immutables, use_super_parameters
   Child({Key? key, required this.txt1, required this.txt2, required this.img})
       : super(key: key);
 

@@ -127,11 +127,13 @@ class _NewPassState extends State<NewPass> {
                               widget.id, newpassword.text);
                           pOP(context);
                             if (new1['success']) {
+                            // ignore: use_build_context_synchronously
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>  Register ()));
                           }
                           else{
                             AwesomeDialog(
+            // ignore: use_build_context_synchronously
             context: context,
             dialogType: DialogType.error,
             animType: AnimType.rightSlide,

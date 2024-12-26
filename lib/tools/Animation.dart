@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
-    Avatar({super.key,required this.iconn});
+    const Avatar({super.key,required this.iconn});
 
    final IconData iconn;
 

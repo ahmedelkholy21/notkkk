@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notkk/Services/wave.dart'; // تأكد من أن هذه المكتبة موجودة
-import 'package:notkk/tools/Animation.dart'; // تأكد من أن هذه المكتبة موجودة
+import 'package:notkk/Services/wave.dart'; 
+import 'package:notkk/tools/Animation.dart';  
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'dart:async';
 
@@ -131,8 +131,7 @@ class _SpeakerState extends State<Speaker> {
               ),
               const Spacer(flex: 2),
 
-              // فقط عندما يكون الميكروفون مفتوحًا يتم عرض SoundWaveScreen
-              Visibility(
+               Visibility(
                 visible: _isListening,
                 child:   SoundWaveScreen(),
               ),

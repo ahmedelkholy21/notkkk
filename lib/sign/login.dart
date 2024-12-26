@@ -1,8 +1,9 @@
+// ignore_for_file: camel_case_types, use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:notkk/Services/privite.dart';
-import 'package:notkk/Services/welcome.dart';
+ import 'package:notkk/Services/welcome.dart';
 import 'package:notkk/base.dart';
 import 'package:notkk/sign/Register.dart';
 import 'package:notkk/sign/forgetpassword.dart';
@@ -12,7 +13,7 @@ import 'package:notkk/waiting.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
-  login({super.key});
+  const login({super.key});
 
   @override
   State<login> createState() => _loginState();

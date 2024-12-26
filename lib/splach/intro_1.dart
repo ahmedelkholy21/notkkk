@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:notkk/sign/login.dart';
 import 'package:notkk/splach/intro_2.dart';
@@ -7,6 +9,7 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -33,8 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       );
     } else {
-      // إذا لم يتم عرض الـ Intro، انتقل إلى صفحة الـ Intro.
-      Navigator.pushReplacement(
+       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const Intro(),

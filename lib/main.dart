@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notkk/Services/sound.dart';
-import 'package:notkk/Services/welcome.dart';
-import 'package:notkk/shh.dart';
-import 'package:notkk/splach/intro_1.dart';
+ import 'package:notkk/splach/intro_1.dart';
  
 void main() {
   runApp(const MyApp());

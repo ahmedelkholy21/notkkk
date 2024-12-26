@@ -9,6 +9,7 @@ class Forgetconferm extends StatefulWidget {
   final String otp;
   final String id;
   @override
+  // ignore: library_private_types_in_public_api
   _ForgetconfermState createState() => _ForgetconfermState();
 }
 
