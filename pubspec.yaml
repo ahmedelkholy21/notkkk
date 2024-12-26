@@ -1,0 +1,183 @@
+name: notkk
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  speech_to_text: ^7.0.0
+  flutter_svg: ^2.0.16
+  awesome_dialog: ^3.2.1
+  shared_preferences: ^2.3.4
+  flutter_otp_text_field: ^1.4.0+2
+  salomon_bottom_bar: ^3.3.2
+  syncfusion_flutter_gauges: ^28.1.36
+  avatar_glow: ^3.0.1
+  smooth_page_indicator: ^1.2.0+3
+  otp_text_field: ^1.1.3
+  flutter_sound: ^9.17.8
+  permission_handler: ^11.3.1
+  record: ^5.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - lib\image\soungrg.png
+    - lib\image\acrg.png
+    - lib\image\speakrg-removebg-preview.png
+    - lib\image\ا.jpg
+    - lib\image\ب.jpg
+    - lib\image\ت.jpg
+    - lib\image\ث.jpg
+    - lib\image\intr-removebg-preview - Copy.png
+    - lib\image\ة.jpg
+    - lib\image\pass.svg
+    - lib\image\passcet.svg
+    - lib\image\syasa.svg
+    - lib\image\sign-out-alt (1) 1.svg
+    - lib\image\Group 36165.svg
+    - lib\image\conect.svg
+    - lib\image\ج.jpg
+    - lib\image\ح.jpg
+    - lib\image\Group.svg
+    - lib\image\conv.svg
+    - lib\image\ara.svg
+    - lib\image\eng.svg
+    - lib\image\خ.jpg
+    - lib\image\د.jpg
+    - lib\image\ذ.jpg
+    - lib\image\ر.jpg
+    - lib\image\ز.jpg
+    - lib\image\intro1.svg
+    - lib\image\intro2.svg
+    - lib\image\intro3.svg
+    - lib\image\measure.png
+    - lib\image\س.jpg
+    - lib\image\ش.jpg
+    - lib\image\ص.jpg
+    - lib\image\ض.jpg
+    - lib\image\ط.jpg
+    - lib\image\ظ.jpg
+    - lib\image\ع.jpg
+    - lib\image\غ.jpg
+    - lib\image\ف.jpg
+    - lib\image\ق.jpg
+    - lib\image\ك.jpg
+    - lib\image\ل.jpg
+    - lib\image\لا.jpg
+    - lib\image\م.jpg
+    - lib\image\ن.jpg
+    - lib\image\ه.jpg
+    - lib\image\و.jpg
+    - lib\image\ي.jpg
+    - lib\image\A.jpg
+    - lib\image\B.jpg
+    - lib\image\C.jpg
+    - lib\image\D.jpg
+    - lib\image\E.jpg
+    - lib\image\F.jpg
+    - lib\image\G.jpg
+    - lib\image\H.jpg
+    - lib\image\I.jpg
+    - lib\image\J.jpg
+    - lib\image\K.jpg
+    - lib\image\L.jpg
+    - lib\image\M.jpg
+    - lib\image\N.jpg
+    - lib\image\O.jpg
+    - lib\image\P.jpg
+    - lib\image\Q.jpg
+    - lib\image\R.jpg
+    - lib\image\S.jpg
+    - lib\image\microphone (2) 1.svg
+    - lib\image\language-square.svg
+    - lib\image\Sounds.svg
+    - lib\image\caption 1.svg
+    - lib\image\T.jpg
+    - lib\image\mic.jpeg
+    - lib\image\نطق.png
+    - lib\image\U.jpg
+    - lib\image\V.jpg
+    - lib\image\W.jpg
+    - lib\image\intr.jpeg
+    - lib\image\intr-removebg-preview.png
+    - lib\image\X.jpg
+    - lib\image\Y.jpg
+    - lib\image\avatar.png
+    - lib\image\Z.jpg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
