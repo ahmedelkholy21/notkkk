@@ -33,21 +33,27 @@ class _SpeakerState extends State<Speaker> {
   }
 
   void _startListening() {
-    _speech.listen(onResult: (result) {
-      setState(() {
-        userInput = result.recognizedWords;
-      });
+    _speech.listen(
+      onResult: (result) {
+        setState(() {
+           userInput = result.recognizedWords;
+        });
 
-      if (!_stopwatch.isRunning) {
-        _startTimer();
-      }
-    }, onSoundLevelChange: (level) {
-      if (level == 0.0 && _stopwatch.isRunning) {
-        _stopTimer();
-      } else if (level > 0.0 && !_stopwatch.isRunning) {
-        _startTimer();
-      }
-    });
+        if (!_stopwatch.isRunning) {
+          _startTimer();
+        }
+      },
+      listenFor: Duration(seconds: 60), 
+      pauseFor: Duration(seconds: 60),   
+      onSoundLevelChange: (level) {
+        if (level == 0.0 && _stopwatch.isRunning) {
+          _stopTimer();
+        } else if (level > 0.0 && !_stopwatch.isRunning) {
+          _startTimer();
+        }
+      },
+      cancelOnError: true,  
+    );
 
     setState(() {
       _isListening = true;
@@ -133,7 +139,7 @@ class _SpeakerState extends State<Speaker> {
 
                Visibility(
                 visible: _isListening,
-                child:   SoundWaveScreen(),
+                child: SoundWaveScreen(),
               ),
 
               const Spacer(flex: 2),

@@ -24,8 +24,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
     });
   }
 
-  // منع العودة للخلف
-  Future<bool> _onWillPop() async {
+   Future<bool> _onWillPop() async {
     return false;  
   }
 

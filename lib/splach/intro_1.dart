@@ -21,14 +21,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToNextScreen() async {
-    // تأخير 2 ثانية لعرض الـ SplashScreen
-    await Future.delayed(const Duration(seconds: 2));
+     await Future.delayed(const Duration(seconds: 2));
     
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool introShown = prefs.getBool('intro_shown') ?? false;
 
-    // إذا تم عرض الـ Intro من قبل، انتقل إلى صفحة تسجيل الدخول مباشرة.
-    if (introShown) {
+     if (introShown) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
