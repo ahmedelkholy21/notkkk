@@ -33,12 +33,12 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(10),
             width: size.width,
-            height: 70,
+            height: size.height * 0.08,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: size.width * 0.35,
+                  width: size.width * 0.33,
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   ),
                 ),
                 SizedBox(
-                  width: size.width * 0.35,
+                  width: size.width * 0.33,
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(

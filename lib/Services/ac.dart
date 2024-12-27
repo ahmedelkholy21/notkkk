@@ -66,7 +66,6 @@ class _MyGridState extends State<MyGrid> {
 
   void _startListening() {
     _speech.listen(onResult: (result) {
-      print(result.recognizedWords);
       setState(() {
         String recognizedWords = result.recognizedWords;
 
@@ -110,49 +109,47 @@ class _MyGridState extends State<MyGrid> {
       ),
       body: Stack(
         children: [
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                childAspectRatio: 0.7,
-              ),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                final item = items[index];
-                int count = letterCount[item['letter']!] ?? 0;
-                Color cardColor;
-
-                if (count >= 10) {
-                  cardColor = Colors.green;
-                } else if (userInput == item['letter']) {
-                  cardColor = Colors.blue;
-                } else {
-                  cardColor = Colors.white;
-                }
-
-                return Container(
-                  decoration: BoxDecoration(
-                    color: cardColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Card(
-                    elevation: 0,
-                    color: Colors.transparent,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(item['image']!, width: 100, height: 100),
-                        const SizedBox(height: 8),
-                        Text(
-                          item['letter']!,
-                          style: const TextStyle(fontSize: 24),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
+          GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 0.7,
             ),
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final item = items[index];
+              int count = letterCount[item['letter']!] ?? 0;
+              Color cardColor;
+
+              if (count >= 10) {
+                cardColor = Colors.green;
+              } else if (userInput == item['letter']) {
+                cardColor = Colors.blue;
+              } else {
+                cardColor = Colors.white;
+              }
+
+              return Container(
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Card(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(item['image']!, width: 100, height: 100),
+                      const SizedBox(height: 8),
+                      Text(
+                        item['letter']!,
+                        style: const TextStyle(fontSize: 24),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
           Positioned(
             left: MediaQuery.of(context).size.width / 2 - 30,

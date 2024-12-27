@@ -21,6 +21,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
         children: [
           Expanded(
             child: PageView(
+              physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
               children: [
                 const Home(),
