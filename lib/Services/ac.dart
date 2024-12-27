@@ -53,7 +53,7 @@ class _MyGridState extends State<MyGrid> {
     super.initState();
     _speech = stt.SpeechToText();
     _initializeSpeech();
-    
+
     // تهيئة عدد مرات ذكر كل حرف
     for (var item in items) {
       letterCount[item['letter']!] = 0;
@@ -66,15 +66,16 @@ class _MyGridState extends State<MyGrid> {
 
   void _startListening() {
     _speech.listen(onResult: (result) {
+      print(result.recognizedWords);
       setState(() {
         String recognizedWords = result.recognizedWords;
 
         if (recognizedWords.isNotEmpty) {
-          userInput = recognizedWords[0]; 
-           if (letterCount.containsKey(userInput)) {
+          userInput = recognizedWords[0];
+          if (letterCount.containsKey(userInput)) {
             letterCount[userInput] = letterCount[userInput]! + 1;
           }
-          _stopListening();  
+          _stopListening();
         }
       });
     });
@@ -95,80 +96,67 @@ class _MyGridState extends State<MyGrid> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back),
+        title: Text(
+          "نطق الحروف بالعربيه",
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Spacer(flex: 1),
-            Image.asset(
-              'lib/image/نطق.png',
-              height: 50,
-              width: 70,
-            ),
-            Spacer(flex: 8),
-            Text("نطق الحروف بالعربيه", style: TextStyle(fontSize: 22)),
-            Spacer(flex: 15)
-          ],
-        ),
+        actions: [
+          Image.asset(
+            'lib/image/نطق.png',
+            height: 50,
+            width: 70,
+          ),
+        ],
       ),
       body: Stack(
         children: [
-          Column(
-            children: [
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 0.7,
-                  ),
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    final item = items[index];
-                    int count = letterCount[item['letter']!] ?? 0;
-                    Color cardColor;
-
-                     if (count >= 10) {
-                      cardColor = Colors.green;  
-                    } else if (userInput == item['letter']) {
-                      cardColor = Colors.blue;  
-                    } else {
-                      cardColor = Colors.white;  
-                    }
-
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: cardColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Card(
-                        elevation: 0,
-                        color: Colors.transparent,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(item['image']!, width: 100, height: 100),
-                            const SizedBox(height: 8),
-                            Text(
-                              item['letter']!,
-                              style: const TextStyle(fontSize: 24),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 0.7,
               ),
-            ],
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                int count = letterCount[item['letter']!] ?? 0;
+                Color cardColor;
+
+                if (count >= 10) {
+                  cardColor = Colors.green;
+                } else if (userInput == item['letter']) {
+                  cardColor = Colors.blue;
+                } else {
+                  cardColor = Colors.white;
+                }
+
+                return Container(
+                  decoration: BoxDecoration(
+                    color: cardColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Card(
+                    elevation: 0,
+                    color: Colors.transparent,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(item['image']!, width: 100, height: 100),
+                        const SizedBox(height: 8),
+                        Text(
+                          item['letter']!,
+                          style: const TextStyle(fontSize: 24),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
           Positioned(
             left: MediaQuery.of(context).size.width / 2 - 30,
-            bottom: 20,
+            bottom: 35,
             child: GestureDetector(
               onTap: () {
                 if (_isListening) {

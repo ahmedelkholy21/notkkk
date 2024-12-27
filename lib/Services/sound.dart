@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:notkk/tools/Animation.dart';
- import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:syncfusion_flutter_gauges/gauges.dart';
- 
+
 class SoundWithGauge extends StatefulWidget {
   const SoundWithGauge({super.key});
 
@@ -17,7 +17,6 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
   String userInput = '';
   bool _isListening = false;
   double _soundLevel = 0.0;
-  double _previousSoundLevel = 0.0;   
 
   @override
   void initState() {
@@ -26,22 +25,18 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
   }
 
   void _initializeSpeech() async {
-    await _speech.initialize();
+    await _speech.initialize(finalTimeout: Duration(days: 1));
   }
 
   void _startListening() {
-    _speech.listen(onResult: (result) {
-      setState(() {
-        userInput = result.recognizedWords;
-        double currentLevel = _calculateSoundLevel(result.recognizedWords);
-         if (currentLevel > _previousSoundLevel) {
-          _soundLevel = currentLevel;
-        } else {
-          _soundLevel = (_soundLevel - 2).clamp(0, 150);
-        }
-        _previousSoundLevel = currentLevel;
-      });
-    });
+    _speech.listen(
+        onSoundLevelChange: (level) {
+          setState(() {
+            _soundLevel = (level.isNegative) ? 0.0 : (level * 10);
+          });
+        },
+        listenFor: Duration(minutes: 60),
+        pauseFor: Duration(hours: 1));
     setState(() {
       _isListening = true;
     });
@@ -54,14 +49,9 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
     });
   }
 
-  double _calculateSoundLevel(String recognizedWords) {
-     return recognizedWords.length.toDouble();  
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       appBar: AppBar(
         title: const Text("قياس الصوت"),
         leading: IconButton(
@@ -80,27 +70,47 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
             Expanded(
               flex: 2,
               child: SfRadialGauge(
-                
                 axes: <RadialAxis>[
-                  RadialAxis(showLabels: false, showAxisLine: false, showTicks: false,
-                        minimum: 0, maximum: 99, radiusFactor: 1.2,
-                        ranges: <GaugeRange>[GaugeRange(startValue: 0, endValue: 33,
-                            color: Color(0xffBAE6FD), label: ' منخفض',
-                            sizeUnit: GaugeSizeUnit.factor,
-                            labelStyle: GaugeTextStyle(fontFamily: 'Times', fontSize:  20),
-                            startWidth: 0.35, endWidth: 0.35
-                        ),GaugeRange(startValue: 33, endValue: 66,
-                          color:Color(0xff73CBE6), label: 'متوسط',
-                          labelStyle: GaugeTextStyle(fontFamily: 'Times', fontSize:   20),
-                          startWidth: 0.35, endWidth: 0.35, sizeUnit: GaugeSizeUnit.factor,
-                        ),
-                          GaugeRange(startValue: 66, endValue: 99,
-                            color:Color(0xff137E9F), label: 'مرتفع',
-                            labelStyle: GaugeTextStyle(fontFamily: 'Times', fontSize:   20),
-                            sizeUnit: GaugeSizeUnit.factor,
-                            startWidth: 0.35, endWidth: 0.35,
-                          ),
-              
+                  RadialAxis(
+                    showLabels: false,
+                    showAxisLine: false,
+                    showTicks: false,
+                    minimum: 0,
+                    maximum: 99,
+                    radiusFactor: 1.2,
+                    ranges: <GaugeRange>[
+                      GaugeRange(
+                          startValue: 0,
+                          endValue: 33,
+                          color: Color(0xffBAE6FD),
+                          label: ' منخفض',
+                          sizeUnit: GaugeSizeUnit.factor,
+                          labelStyle:
+                              GaugeTextStyle(fontFamily: 'Times', fontSize: 20),
+                          startWidth: 0.35,
+                          endWidth: 0.35),
+                      GaugeRange(
+                        startValue: 33,
+                        endValue: 66,
+                        color: Color(0xff73CBE6),
+                        label: 'متوسط',
+                        labelStyle:
+                            GaugeTextStyle(fontFamily: 'Times', fontSize: 20),
+                        startWidth: 0.35,
+                        endWidth: 0.35,
+                        sizeUnit: GaugeSizeUnit.factor,
+                      ),
+                      GaugeRange(
+                        startValue: 66,
+                        endValue: 99,
+                        color: Color(0xff137E9F),
+                        label: 'مرتفع',
+                        labelStyle:
+                            GaugeTextStyle(fontFamily: 'Times', fontSize: 20),
+                        sizeUnit: GaugeSizeUnit.factor,
+                        startWidth: 0.35,
+                        endWidth: 0.35,
+                      ),
                     ],
                     pointers: <GaugePointer>[
                       NeedlePointer(
@@ -125,10 +135,12 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
                 ],
               ),
             ),
-            const Spacer(flex: 2,),
-             Expanded(
+            const Spacer(
+              flex: 2,
+            ),
+            Expanded(
               flex: 0,
-               child: GestureDetector(
+              child: GestureDetector(
                 onTap: () {
                   if (_isListening) {
                     _stopListening();
@@ -136,10 +148,14 @@ class _SoundWithGaugeState extends State<SoundWithGauge> {
                     _startListening();
                   }
                 },
-                child:  Avatar(iconn: _isListening ? Icons.stop : Icons.mic,),
-                           ),
-             ),
-           const Spacer(flex: 1,)
+                child: Avatar(
+                  iconn: _isListening ? Icons.stop : Icons.mic,
+                ),
+              ),
+            ),
+            const Spacer(
+              flex: 1,
+            )
           ],
         ),
       ),

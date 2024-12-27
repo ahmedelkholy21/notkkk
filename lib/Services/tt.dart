@@ -45,7 +45,7 @@ class _MyGrid1State extends State<MyGrid1> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String? matchedItem;
-  Map<String, int> letterCount = {};  
+  Map<String, int> letterCount = {};
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _MyGrid1State extends State<MyGrid1> {
     _speech = stt.SpeechToText();
     _initializeSpeech();
 
-     for (var item in items) {
+    for (var item in items) {
       letterCount[item['name']!] = 0;
     }
   }
@@ -68,13 +68,13 @@ class _MyGrid1State extends State<MyGrid1> {
         String recognizedWords = result.recognizedWords;
 
         if (recognizedWords.isNotEmpty) {
-          userInput = recognizedWords; 
-           matchedItem = items.firstWhere(
+          userInput = recognizedWords;
+          matchedItem = items.firstWhere(
             (item) => recognizedWords.contains(item['test']!),
             orElse: () => {'name': '', 'path': '', 'test': ''},
-          )['name'];  
+          )['name'];
 
-           if (matchedItem != null && matchedItem!.isNotEmpty) {
+          if (matchedItem != null && matchedItem!.isNotEmpty) {
             letterCount[matchedItem!] = letterCount[matchedItem!]! + 1;
           }
 
@@ -105,20 +105,15 @@ class _MyGrid1State extends State<MyGrid1> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Spacer(flex: 1),
-            Image.asset(
-              'lib/image/نطق.png',
-              height: 50,
-              width: 70,
-            ),
-            Spacer(flex: 8),
-            Text("نطق الحروف بالنجليزية", style: TextStyle(fontSize: 22)),
-            Spacer(flex: 15)
-          ],
-        ),
+        title: Text("نطق الحروف بالنجليزية",
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+        actions: [
+          Image.asset(
+            'lib/image/نطق.png',
+            height: 50,
+            width: 70,
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -133,16 +128,16 @@ class _MyGrid1State extends State<MyGrid1> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final item = items[index];
-                    bool isMatched = matchedItem == item['name'];  
-                    int count = letterCount[item['name']!] ?? 0;  
+                    bool isMatched = matchedItem == item['name'];
+                    int count = letterCount[item['name']!] ?? 0;
                     Color cardColor;
 
-                     if (count > 10) {
-                      cardColor = Colors.green;  
+                    if (count > 10) {
+                      cardColor = Colors.green;
                     } else if (isMatched) {
-                      cardColor = Colors.blue;  
+                      cardColor = Colors.blue;
                     } else {
-                      cardColor = Colors.white; 
+                      cardColor = Colors.white;
                     }
 
                     return Container(
@@ -162,7 +157,7 @@ class _MyGrid1State extends State<MyGrid1> {
                               item['name']!,
                               style: TextStyle(
                                 fontSize: 24,
-                                color: isMatched ? Colors.white : Colors.black,  
+                                color: isMatched ? Colors.white : Colors.black,
                               ),
                             ),
                           ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notkk/Services/wave.dart'; 
-import 'package:notkk/tools/Animation.dart';  
+import 'package:notkk/Services/wave.dart';
+import 'package:notkk/tools/Animation.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'dart:async';
 
@@ -36,15 +36,15 @@ class _SpeakerState extends State<Speaker> {
     _speech.listen(
       onResult: (result) {
         setState(() {
-           userInput = result.recognizedWords;
+          userInput = result.recognizedWords;
         });
 
         if (!_stopwatch.isRunning) {
           _startTimer();
         }
       },
-      listenFor: Duration(seconds: 60), 
-      pauseFor: Duration(seconds: 60),   
+      listenFor: Duration(seconds: 60),
+      pauseFor: Duration(seconds: 60),
       onSoundLevelChange: (level) {
         if (level == 0.0 && _stopwatch.isRunning) {
           _stopTimer();
@@ -52,7 +52,6 @@ class _SpeakerState extends State<Speaker> {
           _startTimer();
         }
       },
-      cancelOnError: true,  
     );
 
     setState(() {
@@ -124,7 +123,6 @@ class _SpeakerState extends State<Speaker> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(flex: 1),
-
               Text(
                 _timeSpent,
                 style:
@@ -136,14 +134,11 @@ class _SpeakerState extends State<Speaker> {
                 style: const TextStyle(fontSize: 22),
               ),
               const Spacer(flex: 2),
-
-               Visibility(
+              Visibility(
                 visible: _isListening,
                 child: SoundWaveScreen(),
               ),
-
               const Spacer(flex: 2),
-
               GestureDetector(
                 onTap: () {
                   if (_isListening) {
