@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
- class ContProfile extends StatefulWidget {
+class ContProfile extends StatefulWidget {
   ContProfile({
     super.key,
     required this.con,
@@ -21,71 +21,34 @@ import 'package:flutter_svg/flutter_svg.dart';
 }
 
 class _ContProfileState extends State<ContProfile> {
-   Color _containerColor = Colors.transparent;
-
-   void _changeColorTemporarily() {
-    setState(() {
-      _containerColor = Color(0xff1EA3CD);  
-    });
-
-     Future.delayed(Duration(seconds: 1), () {
-      setState(() {
-        _containerColor = Colors.transparent;   
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-         _changeColorTemporarily();
-
-         if (widget.onPressed != null) {
+        if (widget.onPressed != null) {
           widget.onPressed!();
         }
       },
       child: Container(
-        margin:   EdgeInsets.only(top: 20,bottom: 7, left: 15, right: 15),
+        padding: EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
+        margin: EdgeInsets.only(top: 7, bottom: 7, left: 15, right: 15),
         decoration: BoxDecoration(
-          color: _containerColor,  
-          border: Border.all(color: Color(0xff1EA3CD)),  
+          color: Colors.transparent,
+          border: Border.all(color: Color(0xff1EA3CD)),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Spacer(
-              flex: 1,
-            ),
-                Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SvgPicture.asset(
-                widget.con,
-                
-                height:  MediaQuery.of(context).size.height/25,
-                width: 40,
-              ),
-            ),
-          
-            const Spacer(
-              flex: 22,
-            ),
-              Text(
+            Text(
               widget.txt,
-              style: const TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: SvgPicture.asset(
-            //     widget.con,
-                
-            //     height:  MediaQuery.of(context).size.height/30,
-            //     width: 30,
-            //   ),
-            // ),
-            const SizedBox(
-              width: 15,
-            )
+            SvgPicture.asset(
+              widget.con,
+              height: MediaQuery.of(context).size.height / 25,
+              width: 40,
+            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:notkk/Services/welcome.dart';
 import 'package:notkk/sign/login.dart';
 import 'package:notkk/splach/intro_2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,20 +22,30 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToNextScreen() async {
-     await Future.delayed(const Duration(seconds: 2));
-    
+    await Future.delayed(const Duration(seconds: 2));
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool introShown = prefs.getBool('intro_shown') ?? false;
+    bool remmber = prefs.getBool('login') ?? false;
 
-     if (introShown) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>   login(),
-        ),
-      );
+    if (introShown) {
+      if (remmber) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Welcomescreen(),
+          ),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Login(),
+          ),
+        );
+      }
     } else {
-       Navigator.pushReplacement(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => const Intro(),

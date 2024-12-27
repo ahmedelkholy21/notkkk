@@ -14,7 +14,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -69,7 +68,6 @@ class Home extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => Speaker()));
                     },
                   ),
-          
                 ],
               ),
             ),
@@ -95,6 +93,7 @@ class inkgrid extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        padding: const EdgeInsets.all(12),
         height: MediaQuery.of(context).size.height / 1.5,
         width: 120,
         margin: const EdgeInsets.all(6),
@@ -104,7 +103,6 @@ class inkgrid extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
             Expanded(
               flex: 3,
               child: SvgPicture.asset(

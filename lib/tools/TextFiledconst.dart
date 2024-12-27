@@ -8,13 +8,14 @@ class TextFiledconst extends StatefulWidget {
       {super.key,
       this.pw = false,
       this.onChanged,
-      //  required this.icon,
+      this.validator,
       required this.controller,
       required this.text});
   final TextEditingController controller;
   final String text;
   final bool pw;
   final ValueChanged<String>? onChanged;
+  final String? Function(String?)? validator;
 
   // final IconData icon;
 
@@ -33,28 +34,30 @@ class _TextFiledconstState extends State<TextFiledconst> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: TextField(
+    return TextFormField(
+      validator: widget.validator,
       controller: widget.controller,
       onChanged: widget.onChanged,
-      textDirection: TextDirection.ltr,
       style: const TextStyle(fontSize: 20),
       obscureText: obs,
       decoration: InputDecoration(
-          prefixIcon: widget.pw
+          suffixIcon: widget.pw
               ? IconButton(
                   onPressed: () {
                     setState(() {
                       obs = !obs;
                     });
                   },
-                  icon: Icon(
-                      obs ? Icons.visibility : Icons.visibility_off_rounded),color: Color(0xff1EA3CD),)
+                  icon: Icon(obs
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_outlined),
+                  color: Color(0xff1EA3CD),
+                )
               : null,
           hintText: widget.text,
           hintTextDirection: TextDirection.rtl,
           hintStyle: const TextStyle(
               fontSize: 18, color: Color.fromARGB(255, 94, 86, 86))),
-    ));
+    );
   }
 }

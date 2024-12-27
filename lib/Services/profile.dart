@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:notkk/sign/Register.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -7,10 +7,11 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading:
             IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
-        title: const Text("الملف الشخصي"),
+        title: const Text('حسابي'),
         backgroundColor: const Color(0xff73CBE6),
       ),
       body: FutureBuilder(
@@ -54,95 +55,82 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 100,
-                              height: 100,
-                              decoration: const ShapeDecoration(
-                                shape: CircleBorder(),
-                                color: Colors.white,
-                              ),
-                              child: CircleAvatar(
-                                child: Image.asset('lib/image/avatar.png'),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              data['name'],
-                              style: TextStyle(
-                                  fontSize: 22,
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.84,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 100,
+                                height: 100,
+                                decoration: const ShapeDecoration(
+                                  shape: CircleBorder(),
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const Text(
-                                  ":البريد الالكتروني",
+                                ),
+                                child: CircleAvatar(
+                                  child: Image.asset('lib/image/avatar.png'),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                data['name'],
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: const Text(
+                                  "البريد الالكتروني",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 24,fontWeight: FontWeight.bold),
+                                      color: Colors.white,
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width / 8,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 8,
-                                ),
-                                Text(
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
                                   data['email'],
-                                  style:
-                                      TextStyle(color: Colors.white, fontSize: 18),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
                                 ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const Text(
-                                  ":رقم الهاتف ",
-                                  style:
-                                      TextStyle(color: Colors.white, fontSize: 24,fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: const Text(
+                                  "رقم الهاتف ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 8,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                 SizedBox(
-                                  width: MediaQuery.of(context).size.width / 8,
-                                ),
-                                Text(
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
                                   data['phone'],
-                                  style:
-                                      TextStyle(color: Colors.white, fontSize: 18),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),

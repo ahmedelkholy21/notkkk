@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:notkk/sign/Register.dart';
 import 'package:notkk/sign/login.dart';
@@ -76,7 +78,7 @@ class _IntroState extends State<Intro> {
                     onPressed: () {
                       if (index == 2) {
                         _markIntroAsShown();
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) =>
                                 Register())); // انتقل إلى صفحة إنشاء حساب
                       } else {
@@ -107,11 +109,11 @@ class _IntroState extends State<Intro> {
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (index == 2) {
-                          _markIntroAsShown();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => login()));
+                          await _markIntroAsShown();
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (context) => Login()));
                         } else {
                           setState(() {
                             index = 2;
@@ -141,7 +143,7 @@ class _IntroState extends State<Intro> {
   }
 
   // دالة لتخزين حالة عرض الـ Intro
-  void _markIntroAsShown() async {
+  Future<void> _markIntroAsShown() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('intro_shown', true);
   }

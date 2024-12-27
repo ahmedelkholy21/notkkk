@@ -1,11 +1,12 @@
- 
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:notkk/Services/ever.dart';
 import 'package:notkk/Services/privite.dart';
- import 'package:notkk/sign/login.dart';
+import 'package:notkk/sign/login.dart';
 import 'package:notkk/tools/contprofile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class More extends StatelessWidget {
   const More({super.key});
@@ -47,9 +48,7 @@ class More extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) => Every()));
               }),
           ContProfile(
-              con: 'lib/image/passcet.svg',
-              txt: "حذف حساب ",
-              onPressed: () {}),
+              con: 'lib/image/passcet.svg', txt: "حذف حساب ", onPressed: () {}),
           ContProfile(
               con: 'lib/image/sign-out-alt (1) 1.svg',
               txt: "تسجيل الخروج",
@@ -63,18 +62,22 @@ class More extends StatelessWidget {
                     color: Colors.white,
                   ),
                   btnOkText: "تسجيل خروج",
-      
+
                   btnCancelColor: Color(0xff1EA3CD),
                   btnOkColor: Color(0xff1EA3CD),
                   title: 'تسجيل الخروج',
                   titleTextStyle:
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  desc: "هل انت متأكد من تسجيل الخروج ؟\n____________________________",
+                  desc:
+                      "هل انت متأكد من تسجيل الخروج ؟\n____________________________",
                   descTextStyle: TextStyle(fontSize: 18),
                   btnCancelOnPress: () {},
-                  btnOkOnPress: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => login()));
+                  btnOkOnPress: () async {
+                    SharedPreferences sp =
+                        await SharedPreferences.getInstance();
+                    sp.setBool('login', false);
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Login()));
                   },
                 ).show();
               }),
